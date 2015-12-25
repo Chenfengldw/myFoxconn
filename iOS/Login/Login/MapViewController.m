@@ -257,7 +257,7 @@
         
     }
     
-   
+    
     self.results=[[NSMutableDictionary alloc]init];
     
     [_manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
@@ -298,10 +298,10 @@
         if((xx+startX<boundaryXmax)&&(xx+startX>boundaryXmin)&&(tmpyy+startY<boundaryYmax)&&(tmpyy+startY>boundaryYmin)&&[self checkObstacle:xx+startX Ycoordinate:tmpyy+startY])
         {
             //NSLog(@"%d",1);
-        
+            
             yy = tmpyy;
         }
-      
+        
         
         
         checkMove--;
@@ -399,7 +399,7 @@
     
     
     
-   // CMAttitude * initAttitude = self.motionManager.deviceMotion.attitude;
+    // CMAttitude * initAttitude = self.motionManager.deviceMotion.attitude;
     
     [[NSFileManager defaultManager]createFileAtPath:@"/Users/localization/Desktop/Login-2/Login/test.txt" contents:nil attributes:nil];
     
@@ -464,13 +464,13 @@
     else{
         if(tmpx<45)
             return false;
-
+        
         if(tmpx>100&&tmpy<320)
             return false;
         return true;
     }
-
-
+    
+    
 }
 
 
@@ -565,7 +565,7 @@
     
     NSString *uuid = [peripheral.identifier.UUIDString substringFromIndex:24];
     //NSLog(@"%@ 's rssi is %@",uuid,RSSI);
-   
+    
     
     int tmp;
     tmp = [RSSI intValue];
@@ -684,15 +684,15 @@
                 yy = 70-startY;
             }
             /*if (maxID == 6 && bleRSS[maxID]/bleTime[maxID]>-65) {
-                NSLog(@"AT 6");
-                xx = 280;
-                yy = 20;
-            }
-            if (maxID == 7 && bleRSS[maxID]/bleTime[maxID]>-65) {
-                NSLog(@"AT 7");
-                xx = 320;
-                yy = -50;
-            }
+             NSLog(@"AT 6");
+             xx = 280;
+             yy = 20;
+             }
+             if (maxID == 7 && bleRSS[maxID]/bleTime[maxID]>-65) {
+             NSLog(@"AT 7");
+             xx = 320;
+             yy = -50;
+             }
              */
             
             for(int i=0;i<bleNum;++i)
@@ -703,53 +703,53 @@
             }
             
             
-        
-         /*   NSLog(@"&");
-            // int maxID = 0;
-            for(int i=0;i<7;++i)
-            {
-                NSLog(@"%f",bleRSS[i]/bleTime[i]);
-                NSLog(@"%d",bleTime[i]);
-                RssAvg[i]=bleRSS[i]/bleTime[i];
-            }
             
-            for(int i=0;i<7;i++ )
-            {
-                if(RssAvg[i]!=0)
-                {
-                    if (RssAvg[i]>std)
-                    {
-                        sum+=RssAvg[i]-std;
-                    }
-                    
-                    
-                }
-                
-            }
-            for (int i=0;i<7;i++)
-            {
-                if(RssAvg[i]!=0)
-                {
-                    if (RssAvg[i]>std)
-                    {
-                        posx=bleposx[i]*((RssAvg[i]-std)/(double)sum);
-                        posy=bleposy[i]*((RssAvg[i]-std)/(double)sum);
-                    }
-                    
-                }
-                
-            }
-            xx = posx - startX;//xx是相对门的位置，posx是实际位置，这里需要写出两者的转换关系,多闻！这里不要忘记改！
-            yy = posy - startY;
+            /*   NSLog(@"&");
+             // int maxID = 0;
+             for(int i=0;i<7;++i)
+             {
+             NSLog(@"%f",bleRSS[i]/bleTime[i]);
+             NSLog(@"%d",bleTime[i]);
+             RssAvg[i]=bleRSS[i]/bleTime[i];
+             }
+             
+             for(int i=0;i<7;i++ )
+             {
+             if(RssAvg[i]!=0)
+             {
+             if (RssAvg[i]>std)
+             {
+             sum+=RssAvg[i]-std;
+             }
+             
+             
+             }
+             
+             }
+             for (int i=0;i<7;i++)
+             {
+             if(RssAvg[i]!=0)
+             {
+             if (RssAvg[i]>std)
+             {
+             posx=bleposx[i]*((RssAvg[i]-std)/(double)sum);
+             posy=bleposy[i]*((RssAvg[i]-std)/(double)sum);
+             }
+             
+             }
+             
+             }
+             xx = posx - startX;//xx是相对门的位置，posx是实际位置，这里需要写出两者的转换关系,多闻！这里不要忘记改！
+             yy = posy - startY;
+             
+             for(int i=0;i<7;++i)
+             {
+             //NSLog(@"%f",bleRSS[i]);
+             bleRSS[i]=0;
+             bleTime[i]=0;
+             RssAvg[i]=0;
+             }*/
             
-            for(int i=0;i<7;++i)
-            {
-                //NSLog(@"%f",bleRSS[i]);
-                bleRSS[i]=0;
-                bleTime[i]=0;
-                RssAvg[i]=0;
-            }*/
-           
         }
         
     }
@@ -763,182 +763,182 @@
     
     
     /*if (!rssReceived)
-        rssReceived = [[NSMutableDictionary alloc] init];
-    BOOL existed = NO;
-    NSString* key;
-    key = uuid;
-    /*for (key in rssReceived) {
-        key = [key substringFromIndex:24];
-        if ([key isEqualToString:peripheral.identifier.UUIDString]) {
-            existed = YES;
-            break;
-        }
-    }
-    if (!existed) {
-        [rssReceived setObject:[NSString stringWithFormat:@"%@",RSSI] forKey:peripheral.identifier.UUIDString];
-    }
+     rssReceived = [[NSMutableDictionary alloc] init];
+     BOOL existed = NO;
+     NSString* key;
+     key = uuid;
+     /*for (key in rssReceived) {
+     key = [key substringFromIndex:24];
+     if ([key isEqualToString:peripheral.identifier.UUIDString]) {
+     existed = YES;
+     break;
+     }
+     }
+     if (!existed) {
+     [rssReceived setObject:[NSString stringWithFormat:@"%@",RSSI] forKey:peripheral.identifier.UUIDString];
+     }
+     
+     
+     [self.rssArray addObject:@"123"];
+     [self.rssArray addObject:@"123"];
+     [self.rssArray addObject:@"123"];
+     [self.rssArray addObject:@"123"];
+     [self.rssArray addObject:@"123"];
+     [self.rssArray addObject:@"123"];
+     //for (id key in rssReceived) {
+     
+     NSString *value = [rssReceived objectForKey:key];
+     float valuenum=[value floatValue];
+     
+     
+     if ([key isEqualToString:@"2311FF526C8C"])
+     {
+     NSLog(@"1");
+     NSLog(key);
+     if (i==10)  {[self.Rsscache1 removeObjectAtIndex:0];i=i-1;}
+     self.Rsscache1[i]=[NSNumber numberWithFloat:valuenum];
+     
+     if(i==9)
+     {
+     for (int a=0;a<=9;a++)
+     {sum1 =sum1+[self.Rsscache1[a] floatValue];}
+     sum1=sum1/10;//求均值
+     self.rssArray[0]=[NSNumber numberWithFloat:sum1];
+     sum1=0;
+     
+     }
+     if (i<10) i=i+1;
+     xx = 0;
+     yy = 0;
+     }
+     */
+    //threshold
+    //
+    //        if ([key isEqualToString:@"uuid1"])
+    //        {   if(i<=9)
+    //           {self.Rsscache1[i]=[NSNumber numberWithFloat:valuenum];//*
+    //               i=i+1;
+    //           }
+    //            if(i==10)
+    //            {   int length;
+    //                length=10;
+    //                for (int a=0;a<=9;a++)
+    //                  {sum1 =sum1+[self.Rsscache1[a] floatValue];}  //***
+    //                   sum1=sum1/10;//求均值   //**
+    //                for(int a=0;a<=9;a++)
+    //                {
+    //                    if([self.Rsscache1[a] floatValue]>sum1*1.1 ) //*
+    //                    {
+    //                        sum1+=[self.Rsscache1[a] floatValue];//**
+    //                        length=length-1;
+    //                    }
+    //                }
+    //
+    //                sum1=sum1/length ;//过滤后求均值   //**
+    //                self.rssArray[0]=[NSNumber numberWithFloat:sum1];//**
+    //                [self.Rsscache1 removeAllObjects];//*
+    //                i=0;
+    //                sum1=0;//*
+    //            }
+    //        }
     
+    //////////////
     
-    [self.rssArray addObject:@"123"];
-    [self.rssArray addObject:@"123"];
-    [self.rssArray addObject:@"123"];
-    [self.rssArray addObject:@"123"];
-    [self.rssArray addObject:@"123"];
-    [self.rssArray addObject:@"123"];
-    //for (id key in rssReceived) {
-    
-        NSString *value = [rssReceived objectForKey:key];
-        float valuenum=[value floatValue];
-    
-    
-        if ([key isEqualToString:@"2311FF526C8C"])
-        {
-            NSLog(@"1");
-            NSLog(key);
-            if (i==10)  {[self.Rsscache1 removeObjectAtIndex:0];i=i-1;}
-            self.Rsscache1[i]=[NSNumber numberWithFloat:valuenum];
-            
-            if(i==9)
-            {
-                for (int a=0;a<=9;a++)
-                {sum1 =sum1+[self.Rsscache1[a] floatValue];}
-                sum1=sum1/10;//求均值
-                self.rssArray[0]=[NSNumber numberWithFloat:sum1];
-                sum1=0;
-                
-            }
-            if (i<10) i=i+1;
-            xx = 0;
-            yy = 0;
-        }
-    */
-        //threshold
-        //
-        //        if ([key isEqualToString:@"uuid1"])
-        //        {   if(i<=9)
-        //           {self.Rsscache1[i]=[NSNumber numberWithFloat:valuenum];//*
-        //               i=i+1;
-        //           }
-        //            if(i==10)
-        //            {   int length;
-        //                length=10;
-        //                for (int a=0;a<=9;a++)
-        //                  {sum1 =sum1+[self.Rsscache1[a] floatValue];}  //***
-        //                   sum1=sum1/10;//求均值   //**
-        //                for(int a=0;a<=9;a++)
-        //                {
-        //                    if([self.Rsscache1[a] floatValue]>sum1*1.1 ) //*
-        //                    {
-        //                        sum1+=[self.Rsscache1[a] floatValue];//**
-        //                        length=length-1;
-        //                    }
-        //                }
-        //
-        //                sum1=sum1/length ;//过滤后求均值   //**
-        //                self.rssArray[0]=[NSNumber numberWithFloat:sum1];//**
-        //                [self.Rsscache1 removeAllObjects];//*
-        //                i=0;
-        //                sum1=0;//*
-        //            }
-        //        }
-        
-        //////////////
-        
-     /*  if ([key isEqualToString:@"508B41ADB4ED"])
-        {NSLog(@"2");
-            if (j==10)  {[self.Rsscache2 removeObjectAtIndex:0];j=j-1;}
-            self.Rsscache2[j]=[NSNumber numberWithFloat:valuenum];
-            
-            if(j==9)
-            {
-                for (int a=0;a<=9;a++)
-                {sum2 =sum2+[self.Rsscache2[a] floatValue];}
-                sum2=sum2/10;//求均值
-                self.rssArray[1]=[NSNumber numberWithFloat:sum2];
-                sum2=0;
-            }
-            if (j<10) j=j+1;
-            xx =23;
-            yy =220;
-        }
-        
-        if ([key isEqualToString:@"3996EB5E586B"])
-        {NSLog(@"3");
-            if (k==10)  {[self.Rsscache3 removeObjectAtIndex:0];k=k-1;}
-            self.Rsscache3[k]=[NSNumber numberWithFloat:valuenum];
-            
-            if(k==9)
-            {
-                for (int a=0;a<=9;a++)
-                {sum3 =sum3+[self.Rsscache3[a] floatValue];}
-                sum3=sum3/10;//求均值
-                self.rssArray[2]=[NSNumber numberWithFloat:sum3];
-                sum3=0;
-            }
-            if (k<10) k=k+1;
-            xx =23;
-            yy =40;
-        }
-        
-        if ([key isEqualToString:@"E57FB07C0991"])
-        {
-            
-            if (l==10)  {[self.Rsscache4 removeObjectAtIndex:0];l=l-1;}
-            self.Rsscache4[l]=[NSNumber numberWithFloat:valuenum];
-            if(l==9)
-            {
-                for (int a=0;a<=9;a++)
-                {sum4 =sum4+[self.Rsscache4[a] floatValue];}
-                sum4=sum4/10;//求均值
-                self.rssArray[3]=[NSNumber numberWithFloat:sum4];
-                sum4=0;
-            }
-            if (l<10) l=l+1;
-            xx =103;
-            yy =243;
-        }
-        
-        
-        if ([key isEqualToString:@"E23E35A0F0A1"])
-        {NSLog(@"here");
-            if (m==10)  {[self.Rsscache5 removeObjectAtIndex:0];m=m-1;}
-            self.Rsscache5[m]=[NSNumber numberWithFloat:valuenum];
-            if(m==9)
-            {
-                for (int a=0;a<=9;a++)
-                {sum5 =sum5+[self.Rsscache5[a] floatValue];}
-                sum5=sum5/10;//求均值
-                self.rssArray[4]=[NSNumber numberWithFloat:sum5];
-                sum5=0;
-            }
-            if (m<10) m=m+1;
-            xx =103;
-            yy =100;
-        }
-        
-        if ([key isEqualToString:@"uuid6"])
-        {
-            if (n==10)  {[self.Rsscache6 removeObjectAtIndex:0];n=n-1;}
-            self.Rsscache5[n]=[NSNumber numberWithFloat:valuenum];
-            if(n==9)
-            {
-                for (int a=0;a<=9;a++)
-                {sum6 =sum6+[self.Rsscache6[a] floatValue];}
-                sum6=sum6/10;//求均值
-                self.rssArray[5]=[NSNumber numberWithFloat:sum6];
-                sum6=0;
-            }
-            if (n<10) n=n+1;
-            xx =23;
-            yy =243;
-        }
-        
-        
-    
-    if ([self.rssArray count]==5)//6这里写ap的数量,表示只有收到所有ap的uuid后开始后续计算
-[sample rssInput:self.rssArray];
-    
-    */
+    /*  if ([key isEqualToString:@"508B41ADB4ED"])
+     {NSLog(@"2");
+     if (j==10)  {[self.Rsscache2 removeObjectAtIndex:0];j=j-1;}
+     self.Rsscache2[j]=[NSNumber numberWithFloat:valuenum];
+     
+     if(j==9)
+     {
+     for (int a=0;a<=9;a++)
+     {sum2 =sum2+[self.Rsscache2[a] floatValue];}
+     sum2=sum2/10;//求均值
+     self.rssArray[1]=[NSNumber numberWithFloat:sum2];
+     sum2=0;
+     }
+     if (j<10) j=j+1;
+     xx =23;
+     yy =220;
+     }
+     
+     if ([key isEqualToString:@"3996EB5E586B"])
+     {NSLog(@"3");
+     if (k==10)  {[self.Rsscache3 removeObjectAtIndex:0];k=k-1;}
+     self.Rsscache3[k]=[NSNumber numberWithFloat:valuenum];
+     
+     if(k==9)
+     {
+     for (int a=0;a<=9;a++)
+     {sum3 =sum3+[self.Rsscache3[a] floatValue];}
+     sum3=sum3/10;//求均值
+     self.rssArray[2]=[NSNumber numberWithFloat:sum3];
+     sum3=0;
+     }
+     if (k<10) k=k+1;
+     xx =23;
+     yy =40;
+     }
+     
+     if ([key isEqualToString:@"E57FB07C0991"])
+     {
+     
+     if (l==10)  {[self.Rsscache4 removeObjectAtIndex:0];l=l-1;}
+     self.Rsscache4[l]=[NSNumber numberWithFloat:valuenum];
+     if(l==9)
+     {
+     for (int a=0;a<=9;a++)
+     {sum4 =sum4+[self.Rsscache4[a] floatValue];}
+     sum4=sum4/10;//求均值
+     self.rssArray[3]=[NSNumber numberWithFloat:sum4];
+     sum4=0;
+     }
+     if (l<10) l=l+1;
+     xx =103;
+     yy =243;
+     }
+     
+     
+     if ([key isEqualToString:@"E23E35A0F0A1"])
+     {NSLog(@"here");
+     if (m==10)  {[self.Rsscache5 removeObjectAtIndex:0];m=m-1;}
+     self.Rsscache5[m]=[NSNumber numberWithFloat:valuenum];
+     if(m==9)
+     {
+     for (int a=0;a<=9;a++)
+     {sum5 =sum5+[self.Rsscache5[a] floatValue];}
+     sum5=sum5/10;//求均值
+     self.rssArray[4]=[NSNumber numberWithFloat:sum5];
+     sum5=0;
+     }
+     if (m<10) m=m+1;
+     xx =103;
+     yy =100;
+     }
+     
+     if ([key isEqualToString:@"uuid6"])
+     {
+     if (n==10)  {[self.Rsscache6 removeObjectAtIndex:0];n=n-1;}
+     self.Rsscache5[n]=[NSNumber numberWithFloat:valuenum];
+     if(n==9)
+     {
+     for (int a=0;a<=9;a++)
+     {sum6 =sum6+[self.Rsscache6[a] floatValue];}
+     sum6=sum6/10;//求均值
+     self.rssArray[5]=[NSNumber numberWithFloat:sum6];
+     sum6=0;
+     }
+     if (n<10) n=n+1;
+     xx =23;
+     yy =243;
+     }
+     
+     
+     
+     if ([self.rssArray count]==5)//6这里写ap的数量,表示只有收到所有ap的uuid后开始后续计算
+     [sample rssInput:self.rssArray];
+     
+     */
     //
     //    NSMutableDictionary *test=[[NSMutableDictionary alloc]init];
     //    [test setValue:@"TEST" forKey:@"fd"];
@@ -991,7 +991,7 @@
     //    //NSLog(@"%@",location.theta);
     //    [self.bleLabel setText:[NSString stringWithFormat:@"%@",location.theta]];
     //    }
-
+    
 }
 @end
 

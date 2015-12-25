@@ -42,7 +42,7 @@
     
     self.navigationController.navigationBar.hidden = YES;
     //contactString=[[NSMutableString alloc]initWithString:@"tes1,chagn;r3,jfsl"];
-    contactString=[[NSMutableString alloc]initWithString:@"123,tony"];
+    contactString=[[NSMutableString alloc]initWithString:@"NULL,empty"];
     ready=false;
     //初始化数据
     [self initContactData];
@@ -92,19 +92,24 @@
     manager.responseSerializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     NSDictionary *parameters = @{@"userid": delegate.userid};
 
-    [self contactDataProcess];
    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+       NSLog(@"%@",responseObject);
+       if (![[operation responseString] isEqualToString:@"None"]) {
         [contactString setString:[operation responseString]];
+       }
         [self contactDataProcess];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //NSLog(@"%@",[operation responseString]);
+        if (![[operation responseString] isEqualToString:@"None"]) {
         [contactString setString:[operation responseString]];
-        NSLog(contactString,nil);
+        }
         [self contactDataProcess];
     }];
 }
 -(void)contactDataProcess {
+    NSLog(@"the contactstring is :%@",contactString);
     _contacts=[NSMutableArray array];
-    NSLog(contactString,nil);
+    //NSLog(contactString,nil);
     NSMutableArray *infoArray=[[contactString componentsSeparatedByString:@";"]mutableCopy];
     
     infoArray=[[infoArray sortedArrayUsingSelector:@selector(compare:)]mutableCopy];
